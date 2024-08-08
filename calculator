@@ -1,0 +1,47 @@
+using System;
+
+class Program
+{
+    delegate int MathOperation(int a, int b);
+
+    static void Main()
+    {
+        MathOperation addOperation = new MathOperation(Add);
+        MathOperation subtractOperation = new MathOperation(Subtract);
+        MathOperation multiplyOperation = new MathOperation(Multiply);
+        MathOperation divideOperation = new MathOperation(Divide);
+
+        int num1 = 10;
+        int num2 = 5;
+
+        Console.WriteLine("Addition: " + addOperation(num1, num2));
+        Console.WriteLine("Subtraction: " + subtractOperation(num1, num2));
+        Console.WriteLine("Multiplication: " + multiplyOperation(num1, num2));
+        Console.WriteLine("Division: " + divideOperation(num1, num2));
+    }
+
+    static int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    static int Subtract(int a, int b)
+    {
+        return a - b;
+    }
+
+    static int Multiply(int a, int b)
+    {
+        return a * b;
+    }
+
+    static int Divide(int a, int b)
+    {
+        if (b == 0)
+        {
+            Console.WriteLine("Error: Division by zero is not allowed.");
+            return 0;
+        }
+        return a / b;
+    }
+}
